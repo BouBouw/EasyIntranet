@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
-import GetCurrentUser from "../functions/GetCurrentUser";
-import CurrentSoftware from "../functions/GetCurrentSoftware";
-
 
 export const Welcome = () => {
     return(

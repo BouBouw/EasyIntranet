@@ -69,12 +69,12 @@ export const Header = ({ user, title }) => {
                                 </a>
                             </li>
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/software/networks" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     Networks & Connexion
                                 </a>
                             </li>
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/software/check-in" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     Chek-In
                                 </a>
                             </li>
@@ -87,17 +87,17 @@ export const Header = ({ user, title }) => {
                         </div>
                         <ul className="flex flex-col space-y-2 ml-10">
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/computer/os" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     Re-install OS
                                 </a>
                             </li>
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/computer/drivers" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     Windows Update & Drivers
                                 </a>
                             </li>
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/computer/bios" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     Flash Bios & Components
                                 </a>
                             </li>
@@ -110,17 +110,17 @@ export const Header = ({ user, title }) => {
                         </div>
                         <ul className="flex flex-col space-y-2 ml-10">
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/tools/converter" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     Converter
                                 </a>
                             </li>
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/tools/socials" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     Socials
                                 </a>
                             </li>
                             <li>
-                                <a href="/#" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                <a href="/tools/to-do" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
                                     To-Do
                                 </a>
                             </li>
@@ -128,13 +128,13 @@ export const Header = ({ user, title }) => {
                     </li>
                     <li className="pt-80"></li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-800 group">
+                        <a href="/support/patch-notes" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-800 group">
                             <FontAwesomeIcon icon={ faNewspaper } className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#ff002c]" id="aside_icon.News" />
                             <span className="ms-3 text-white">Patch Notes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-800 group">
+                        <a href="/support/contact" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-800 group">
                             <FontAwesomeIcon icon={ faHeadset } className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#ff002c]" id="aside_icon.Contact" />
                             <span className="ms-3 text-white">Contact</span>
                         </a>
