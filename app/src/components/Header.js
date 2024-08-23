@@ -14,6 +14,11 @@ export const Header = ({ user, title }) => {
                 document.getElementById('aside_icon.Software').style.color = '#ff002c';
                 break;
             }
+
+            case 'Update': {
+                document.getElementById('aside_icon.Update').style.color = '#ff002c';
+                break;
+            }
         }
     }, []);
 
