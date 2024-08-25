@@ -1,8 +1,8 @@
 const express = require('express');
-const { Dev } = require('../controllers/Main');
+const { AuthController } = require('../controllers/Main');
 
 const router = express.Router();
 
-router.get('/', Dev);
+router.get('/', AuthController  );
 
 module.exports = router;

@@ -1,9 +1,18 @@
-import { faCloudArrowUp, faHeadset, faHouse, faMicrochip, faNewspaper, faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faCloudArrowUp, faCode, faHeadset, faHouse, faMicrochip, faNewspaper, faWrench } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Auth from "../functions/Auth";
 
-export const Header = ({ user, title }) => {
+export const Header = ({ title }) => {
+    const [view, setView] = useState(false);
+    const [user, setUser] = useState(null);
+
     useEffect(() => {
+        Auth.Controller().then((result) => {
+            setUser(result.data.user)
+            console.log(result.data.user);
+        });
+
         switch(title) {
             case 'Welcome': {
                 document.getElementById('aside_icon.Home').style.color = '#ff002c';
@@ -24,6 +33,11 @@ export const Header = ({ user, title }) => {
                 document.getElementById('aside_icon.Tools').style.color = '#ff002c';
                 break;
             }
+
+            case 'Developers': {
+                document.getElementById('aside_icon.Developers').style.color = '#ff002c';
+                break;
+            }
         }
     }, []);
 
@@ -41,9 +55,25 @@ export const Header = ({ user, title }) => {
                 <section>
                     { user ?
                         <>
-                            <button className="bg-gray-800 text-white p-2 w-64 rounded-md">
-                                { user.email }
+                            <button className="bg-gray-800 text-white p-2 w-52 rounded-md" onClick={(e) => {
+                                view ? setView(false) : setView(true);
+                            }}>
+                                { user.firstName } { (user.lastName).slice(0, 1) }.
                             </button>
+                            <div className={`${view ? 'block' : 'hidden'} absolute bg-gray-800 border border-gray-700 p-2 right-3 w-52 mt-1.5 rounded-sm shadow-xl`}>
+                                <ul className="space-y-2">
+                                    <li>
+                                        <a href="/#" className="text-white hover:underline underline-offset-2">
+                                            Nothing here...
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/logout" className="text-red-400 hover:underline underline-offset-2">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </>
                     :
                         <>
@@ -138,7 +168,24 @@ export const Header = ({ user, title }) => {
                             </li>
                         </ul>
                     </li>
-                    <li className="pt-80"></li>
+                    { user?.permInt !== 0 ?
+                        <>
+                            <div className="flex items-center p-2 text-gray-900 rounded-lg group">
+                                <FontAwesomeIcon icon={ faCode } className="w-5 h-5 text-gray-500 transition duration-75" id="aside_icon.Developers" />
+                                <span className="ms-3 text-white">Developers</span>
+                            </div>
+                            <ul className="flex flex-col space-y-2 ml-10">
+                                <li>
+                                    <a href="/dashboard/users" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
+                                        Users
+                                    </a>
+                                </li>
+                            </ul>
+                        </>
+                    :
+                        <></>
+                    }
+                    <li className={`${user?.permInt !== 0 ? 'pt-64' : "pt-80"}`}></li>
                     <li>
                         <a href="/support/patch-notes" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-800 group">
                             <FontAwesomeIcon icon={ faNewspaper } className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#ff002c]" id="aside_icon.News" />

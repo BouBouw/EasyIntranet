@@ -16,13 +16,18 @@ import { Bios } from './views/Update/Bios';
 import { Converter } from './views/Tools/Converter';
 import { Socials } from './views/Tools/Socials';
 import { ToDo } from './views/Tools/ToDo';
+
 import { Login } from './views/Auth/Login';
+
+import { Users } from './views/Developers/Users';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={"/"} element={ <Login/> } />
+      <Route path={"/login"} element={ <Login/> } />
+
+        <Route path={"/"} element={ <Welcome/> } />
         <Route path={"/home"} element={ <Welcome/> } />
 
         <Route path={"/software/informations"} element={ <Informations/> } />
@@ -37,6 +42,8 @@ function App() {
         <Route path={"/tools/converter"} element={ <Converter/> } />
         <Route path={"/tools/socials"} element={ <Socials/> } />
         <Route path={"/tools/to-do"} element={ <ToDo/> } />
+
+        <Route path={"/dashboard/users"} element={ <Users/> } />
       </Routes>
     </BrowserRouter>
   );

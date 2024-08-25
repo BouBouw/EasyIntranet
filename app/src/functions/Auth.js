@@ -1,5 +1,18 @@
 import axios from "axios";
 
+const Controller = () => {
+    return new Promise((resolve, reject) => {
+        try {
+            axios.get('http://localhost:4000')
+            .then((result) => {
+                resolve(result)
+            })
+        } catch(error) {
+
+        }
+    })
+}
+
 const Login = (email, password) => {
     return new Promise((resolve, reject) => {
         try {
@@ -9,7 +22,7 @@ const Login = (email, password) => {
                 password
             })
             .then((result) => {
-                console.log(result)
+                resolve(result)
             })
             .catch((error) => {
                 console.error("Error fetching data:", error.message);
@@ -22,6 +35,7 @@ const Login = (email, password) => {
 }
 
 const Auth = {
+    Controller,
     Login
 };
 

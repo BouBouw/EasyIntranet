@@ -10,12 +10,16 @@ const Login = async (req, res) => {
         return res.status(201).json({ message_eror: "USER_NOT_FOUND" });
       }
 
-      req.session.userId = rows[0].id;
+      req.session.data = rows[0].id;
 
       res.status(200).json({ user: rows[0] });
     } catch(error) {
         console.log(error);
     }
+}
+
+const getUserById = async (req, res) => {
+  const [rows, fields] = await db.query('SELECT * FROM sessions WHERE session_id = ?', [req.session.sessionID])
 }
 
 module.exports = {

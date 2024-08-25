@@ -3,7 +3,7 @@ const { getAllUsers, getUserById, createUser } = require('../../controllers/Auth
 
 const router = express.Router();
 
-router.get('/', getAllUsers);
+router.get('/all', getAllUsers);
 router.get('/:id', getUserById);
 router.post('/', createUser);
 

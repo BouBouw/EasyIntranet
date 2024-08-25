@@ -34,7 +34,10 @@ app.use(session({
 
 app.use('/', require('./routes/Main.js'))
 app.use('/auth', require('./routes/Auth/Auth.js'));
-app.use('/api/login', require('./routes/Auth/Users.js'));
+
+app.use('/api/users', require('./routes/Auth/Users.js'));
+
+app.use('/api/stores', require('./routes/Stores/Stores.js'))
 
 app.use('/api/software', require('./routes/Softwares/GetCurrentComputer.js'))
 

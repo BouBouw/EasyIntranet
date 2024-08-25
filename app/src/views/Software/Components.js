@@ -90,7 +90,7 @@ export const Components = () => {
                         Software <span className="text-[#ff002c]">&gt;</span> Components
                     </p>
                 </div>
-                <div className="mt-10">
+                <div className="mt-8 p-2">
                     { data ?
                     <section className="grid grid-cols-2 gap-4">
                         <div className="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
