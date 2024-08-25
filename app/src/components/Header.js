@@ -19,6 +19,11 @@ export const Header = ({ user, title }) => {
                 document.getElementById('aside_icon.Update').style.color = '#ff002c';
                 break;
             }
+
+            case 'Tools': {
+                document.getElementById('aside_icon.Tools').style.color = '#ff002c';
+                break;
+            }
         }
     }, []);
 
@@ -42,7 +47,9 @@ export const Header = ({ user, title }) => {
                         </>
                     :
                         <>
-                            Connexion
+                            <button className="bg-[#ff002c] text-white font-bold w-32 leading-tight p-2 rounded-md">
+                                Connexion
+                            </button>
                         </>
                     }
                 </section>
@@ -59,7 +66,7 @@ export const Header = ({ user, title }) => {
                     </li>
                     <li>
                         <div className="flex items-center p-2 text-gray-900 rounded-lg group">
-                            <FontAwesomeIcon icon={ faMicrochip } className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#ff002c]" id="aside_icon.Software" />
+                            <FontAwesomeIcon icon={ faMicrochip } className="w-5 h-5 text-gray-500 transition duration-75" id="aside_icon.Software" />
                             <span className="ms-3 text-white">Software</span>
                         </div>
                         <ul className="flex flex-col space-y-2 ml-10">
@@ -80,14 +87,14 @@ export const Header = ({ user, title }) => {
                             </li>
                             <li>
                                 <a href="/software/check-in" className="text-gray-100 font-normal underline-offset-2 hover:underline hover:text-[#ff002c]">
-                                    Chek-In
+                                    Check-In
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <div className="flex items-center p-2 text-gray-900 rounded-lg group">
-                            <FontAwesomeIcon icon={ faCloudArrowUp } className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#ff002c]" id="aside_icon.Update" />
+                            <FontAwesomeIcon icon={ faCloudArrowUp } className="w-5 h-5 text-gray-500 transition duration-75" id="aside_icon.Update" />
                             <span className="ms-3 text-white">Update / Upgrade</span>
                         </div>
                         <ul className="flex flex-col space-y-2 ml-10">
@@ -110,7 +117,7 @@ export const Header = ({ user, title }) => {
                     </li>
                     <li>
                         <div className="flex items-center p-2 text-gray-900 rounded-lg group">
-                            <FontAwesomeIcon icon={ faWrench } className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#ff002c]" id="aside_icon.Tools" />
+                            <FontAwesomeIcon icon={ faWrench } className="w-5 h-5 text-gray-500 transition duration-75" id="aside_icon.Tools" />
                             <span className="ms-3 text-white">Tools</span>
                         </div>
                         <ul className="flex flex-col space-y-2 ml-10">
