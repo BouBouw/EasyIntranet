@@ -2,6 +2,9 @@ import { useEffect, useState } from "react"
 import { Header } from "../../components/Header"
 
 export const ToDo = () => {
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const hours = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+
     const [todos, setTodos] = useState([]);
     const [inputValue, setInputValue] = useState([]);
 
@@ -28,7 +31,7 @@ export const ToDo = () => {
           return `${day}/${month}/${year}`;
         };
       
-        return `${formatDate(monday)} au ${formatDate(sunday)}`;
+        return `${formatDate(monday)} to ${formatDate(sunday)}`;
     }
 
     function getCurrentDateFormatted() {
@@ -66,7 +69,7 @@ export const ToDo = () => {
 
     return(
         <>
-            <Header user={null} title={"Tools"} />
+            <Header title={"Tools"} />
             <section className="pl-12 mt-20 sm:ml-64">
                 <div id="path">
                     <p className="font-bold text-gray-600">
@@ -98,445 +101,40 @@ export const ToDo = () => {
                     </div>
                     <div className="flex justify-between p-5">
                         <div className="flex flex-col items-center">
-                            <span>
-                                Hours
-                            </span>
-                            <ul className="mt-2 space-y-12">
-                                <li>
-                                    <span className="mx-2">10:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">11:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">12:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">13:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">14:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">13:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">15:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">16:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">17:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">18:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">19:00</span>
-                                </li>
-                                <li>
-                                    <span className="mx-2">20:00</span>
-                                </li>
-                            </ul>
+                          <span>Hours</span>
+                          <ul className="mt-1 space-y-14">
+                            {hours.map((hour, index) => (
+                              <li key={index}>
+                                <span className="mx-2">{hour}</span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <span>
-                                Monday
-                            </span>
+                        {days.map((day, dayIndex) => (
+                          <div key={dayIndex} className="flex flex-col items-center">
+                            <span>{day}</span>
                             <ul className="mt-2 border-l-2 border-red-500">
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
+                              {hours.map((_, hourIndex) => (
+                                <li key={hourIndex}>
+                                  <button
+                                    className={`p-10 border-b border-gray-300 w-40 ${
+                                      day === 'Sunday'
+                                        ? 'bg-gray-100/30 hover:bg-gray-200/30'
+                                        : 'bg-gray-100 hover:bg-gray-200'
+                                    }`}
+                                    id="calendarTodo"
+                                    key={'test'}
+                                    onClick={(e) => {
+                                        console.log(`${dayIndex}.${hourIndex}`)
+                                        // add to-do user
+                                    }}
+                                    disabled={day === 'Sunday'}
+                                  ></button>
                                 </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
+                              ))}
                             </ul>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <span>
-                                Tuesday
-                            </span>
-                            <ul className="mt-2 border-l-2 border-red-500">
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <span>
-                                Wednesday
-                            </span>
-                            <ul className="mt-2 border-l-2 border-red-500">
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <span>
-                                Thursday
-                            </span>
-                            <ul className="mt-2 border-l-2 border-red-500">
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40">
-
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <span>
-                                Friday
-                            </span>
-                            <ul className="mt-2 border-l-2 border-red-500">
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo"></button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300 w-40" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <span>
-                                Saturday
-                            </span>
-                            <ul className="mt-2 border-l-2 border-red-500">
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100 hover:bg-gray-200 border-b border-gray-300" id="calendarTodo">
-
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <span>
-                                Sunday
-                            </span>
-                            <ul className="mt-2 border-l-2 border-red-500">
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                                <li>
-                                    <button className="p-10 bg-gray-100/30 hover:bg-gray-200/30 border-b border-gray-300" id="calendarTodo" disabled>
-
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
+                          </div>
+                        ))}
                     </div>
                 </div>
             </section>

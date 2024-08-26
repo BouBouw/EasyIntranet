@@ -77,9 +77,9 @@ export const Header = ({ title }) => {
                         </>
                     :
                         <>
-                            <button className="bg-[#ff002c] text-white font-bold w-32 leading-tight p-2 rounded-md">
+                            <a href="/login" className="bg-[#ff002c] text-white font-bold w-32 leading-tight p-2 rounded-md">
                                 Connexion
-                            </button>
+                            </a>
                         </>
                     }
                 </section>
@@ -168,7 +168,7 @@ export const Header = ({ title }) => {
                             </li>
                         </ul>
                     </li>
-                    { user?.permInt !== 0 ?
+                    { user?.permInt === 2 ?
                         <>
                             <div className="flex items-center p-2 text-gray-900 rounded-lg group">
                                 <FontAwesomeIcon icon={ faCode } className="w-5 h-5 text-gray-500 transition duration-75" id="aside_icon.Developers" />
@@ -185,7 +185,7 @@ export const Header = ({ title }) => {
                     :
                         <></>
                     }
-                    <li className={`${user?.permInt !== 0 ? 'pt-64' : "pt-80"}`}></li>
+                    <li className={`${user?.permInt === 2 ? 'pt-64' : "pt-80"}`}></li>
                     <li>
                         <a href="/support/patch-notes" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-800 group">
                             <FontAwesomeIcon icon={ faNewspaper } className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#ff002c]" id="aside_icon.News" />

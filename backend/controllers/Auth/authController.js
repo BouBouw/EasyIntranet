@@ -18,10 +18,20 @@ const Login = async (req, res) => {
     }
 }
 
+const Logout = async (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send('Erreur lors de la déconnexion');
+    }
+    res.status(200).send({ });
+  });
+}
+
 const getUserById = async (req, res) => {
   const [rows, fields] = await db.query('SELECT * FROM sessions WHERE session_id = ?', [req.session.sessionID])
 }
 
 module.exports = {
-  Login
+  Login,
+  Logout
 }

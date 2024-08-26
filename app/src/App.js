@@ -20,12 +20,14 @@ import { ToDo } from './views/Tools/ToDo';
 import { Login } from './views/Auth/Login';
 
 import { Users } from './views/Developers/Users';
+import { Logout } from './views/Auth/Logout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path={"/login"} element={ <Login/> } />
+        <Route path={"/login"} element={ <Login/> } />
+        <Route path={"/logout"} element={ <Logout/> } />
 
         <Route path={"/"} element={ <Welcome/> } />
         <Route path={"/home"} element={ <Welcome/> } />

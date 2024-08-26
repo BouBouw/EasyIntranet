@@ -34,9 +34,28 @@ const Login = (email, password) => {
     });
 }
 
+const Logout = () => {
+    return new Promise((resolve, reject) => {
+        try {
+            let current = null; 
+            axios.post('http://localhost:4000/auth/logout')
+            .then((result) => {
+                resolve(result)
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error.message);
+                reject(error);
+            });
+        } catch (err) {
+            reject(err);
+        }
+    });
+}
+
 const Auth = {
     Controller,
-    Login
+    Login,
+    Logout
 };
 
 export default Auth;

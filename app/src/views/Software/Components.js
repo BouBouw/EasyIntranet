@@ -93,86 +93,148 @@ export const Components = () => {
                 <div className="mt-8 p-2">
                     { data ?
                     <section className="grid grid-cols-2 gap-4">
-                        <div className="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
-                            <span className="font-bold">
-                                CPU
-                            </span>
-                            <ul className="flex flex-col space-y-1 mt-5">
-                                <li>
-                                    <p>
-                                        <strong>
-                                            Model :
-                                        </strong>&ensp;
-                                        {data.cpu?.brand}
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>
-                                            Frequency :
-                                        </strong>&ensp;
-                                        {data.cpu?.speed} GHz (Turbo Boost : { data.cpu?.speedMax} GHz)
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>
-                                            Cores :
-                                        </strong>&ensp;
-                                        {data.cpu?.cores} cores, { data.cpu?.physicalCores } threads
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>
-                                            Socket :
-                                        </strong>&ensp;
-                                        {data.cpu?.socket}
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
-                            <span className="font-bold">
-                                RAM
-                            </span>
-                            { data.ram?.map((item, index) => (
-                                <ul className="flex flex-col space-y-1 mt-5 bg-gray-800/5 p-1">
+                        { data?.cpu ?
+                        <>
+                            <div className="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
+                                <span className="font-bold">
+                                    CPU
+                                </span>
+                                <ul className="flex flex-col space-y-1 mt-5">
                                     <li>
                                         <p>
                                             <strong>
                                                 Model :
                                             </strong>&ensp;
-                                            { item?.manufacturer}
+                                            {data.cpu?.brand}
                                         </p>
                                     </li>
                                     <li>
                                         <p>
                                             <strong>
-                                                Capacité :
+                                                Frequency :
                                             </strong>&ensp;
-                                            { (Math.floor(item?.size / 1073741824)).toFixed(0) } Go
+                                            {data.cpu?.speed} GHz (Turbo Boost : { data.cpu?.speedMax} GHz)
                                         </p>
                                     </li>
                                     <li>
                                         <p>
                                             <strong>
-                                                Types :
+                                                Cores :
                                             </strong>&ensp;
-                                            { item?.type }
+                                            {data.cpu?.cores} cores, { data.cpu?.physicalCores } threads
                                         </p>
                                     </li>
                                     <li>
                                         <p>
                                             <strong>
-                                                Tension :
+                                                Socket :
                                             </strong>&ensp;
-                                            { item?.voltageConfigured }
+                                            {data.cpu?.socket}
                                         </p>
                                     </li>
                                 </ul>
-                            ))}
-                        </div>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div class="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
+                                <span className="font-bold">
+                                    CPU
+                                </span>
+                                <div class="animate-pulse flex space-x-4 mt-5">
+                                    <div class="flex-1 space-y-10 py-1">
+                                      <div class="h-2 bg-gray-200 rounded"></div>
+                                      <div class="space-y-3">
+                                        <div class="grid grid-cols-3 gap-4">
+                                          <div class="h-2 bg-gray-200 rounded col-span-2"></div>
+                                          <div class="h-2 bg-gray-200 rounded col-span-1"></div>
+                                        </div>
+                                        <div class="h-2 bg-gray-200 rounded"></div>
+                                      </div>
+                                      <div class="space-y-3">
+                                        <div class="grid grid-cols-3 gap-4">
+                                          <div class="h-2 bg-gray-200 rounded col-span-2"></div>
+                                          <div class="h-2 bg-gray-200 rounded col-span-1"></div>
+                                        </div>
+                                        <div class="h-2 bg-gray-200 rounded"></div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                        }
+                        { data?.ram ?
+                        <>
+                            <div className="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
+                                <span className="font-bold">
+                                    RAM
+                                </span>
+                                { data.ram?.map((item, index) => (
+                                    <ul className="flex flex-col space-y-1 mt-5 bg-gray-800/5 p-1">
+                                        <li>
+                                            <p>
+                                                <strong>
+                                                    Model :
+                                                </strong>&ensp;
+                                                { item?.manufacturer}
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <strong>
+                                                    Capacité :
+                                                </strong>&ensp;
+                                                { (Math.floor(item?.size / 1073741824)).toFixed(0) } Go
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <strong>
+                                                    Types :
+                                                </strong>&ensp;
+                                                { item?.type }
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <strong>
+                                                    Tension :
+                                                </strong>&ensp;
+                                                { item?.voltageConfigured }
+                                            </p>
+                                        </li>
+                                    </ul>
+                                ))}
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div class="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
+                                <span className="font-bold">
+                                    RAM
+                                </span>
+                                <div class="animate-pulse flex space-x-4 mt-5">
+                                    <div class="flex-1 space-y-10 py-1">
+                                      <div class="h-2 bg-gray-200 rounded"></div>
+                                      <div class="space-y-3">
+                                        <div class="grid grid-cols-3 gap-4">
+                                          <div class="h-2 bg-gray-200 rounded col-span-2"></div>
+                                          <div class="h-2 bg-gray-200 rounded col-span-1"></div>
+                                        </div>
+                                        <div class="h-2 bg-gray-200 rounded"></div>
+                                      </div>
+                                      <div class="space-y-3">
+                                        <div class="grid grid-cols-3 gap-4">
+                                          <div class="h-2 bg-gray-200 rounded col-span-2"></div>
+                                          <div class="h-2 bg-gray-200 rounded col-span-1"></div>
+                                        </div>
+                                        <div class="h-2 bg-gray-200 rounded"></div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                        }
                         <div className="bg-gray-800/5 w-[770px] p-3 rounded-md border-l-2 border-[#ff002c] hover:scale-105 hover:shadow-xl duration-500">
                             <span className="font-bold">
                                 Disks
