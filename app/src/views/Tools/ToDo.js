@@ -96,8 +96,28 @@ export const ToDo = () => {
                     </ul>
                 </div>
                 <div className="mt-10">
-                    <div>
-                        { getCurrentWeekRange() } - today : { getCurrentDateFormatted() }
+                    <div className="flex justify-between items-center p-5">
+                        <div className="flex flex-row space-x-2">
+                            <div className="flex flex-col space-y-1">
+                                <h1>Week :</h1>
+                                <span className="bg-white p-1 rounded-md">{ getCurrentWeekRange() }</span>
+                            </div>
+                            <div className="flex flex-col space-y-1">
+                                <h1>Today :</h1>
+                                <span className="bg-white p-1 rounded-md">{ getCurrentDateFormatted() }</span>
+                            </div>
+                        </div>
+                        <div className="flex space-x-2">
+                            <button>
+                                action
+                            </button>
+                            <button>
+                                action
+                            </button>
+                            <button>
+                                delete
+                            </button>
+                        </div>
                     </div>
                     <div className="flex justify-between p-5">
                         <div className="flex flex-col items-center">
